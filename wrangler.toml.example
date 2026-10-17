@@ -1,0 +1,12 @@
+name = "espacecloud-api"
+main = "worker/src/index.js"
+compatibility_date = "2026-10-17"
+
+[[r2_buckets]]
+binding = "FILES"
+bucket_name = "REPLACE_WITH_YOUR_R2_BUCKET_NAME"
+
+[vars]
+SUPABASE_URL = "https://YOUR_PROJECT_REF.supabase.co"
+SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY"
+ALLOWED_ORIGIN = "https://paulcloud-ps.github.io"
