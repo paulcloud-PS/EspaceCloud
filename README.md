@@ -7,7 +7,7 @@ Cette version ajoute les écrans de création de compte et de connexion, ainsi q
 - `index.html` et `app.js` : site web en français.
 - `config.js` : emplacement pour l’URL Supabase, sa clé publique et l’adresse du Worker. Les valeurs sont volontairement vides.
 - `schema.sql` : table des fichiers et règles d’accès par utilisateur.
-- `worker/src/index.js` : service entre les comptes et le stockage R2.
+- `index.js` : service Cloudflare Worker entre les comptes et le stockage R2.
 - `wrangler.toml.example` : exemple de configuration du Worker.
 
 La limite actuelle est de 50 Mo par fichier. Les extensions courantes des images, fichiers audio, vidéos et documents sont acceptées. Commence uniquement avec des fichiers d’essai sans importance.
@@ -23,7 +23,7 @@ La limite actuelle est de 50 Mo par fichier. Les extensions courantes des images
 ## 2. Créer le stockage privé
 
 1. Crée un compte Cloudflare et un bucket R2 privé, par exemple `espacecloud-files`.
-2. Crée un Worker nommé `espacecloud-api` à partir du code `worker/src/index.js`.
+2. Crée un Worker nommé `espacecloud-api` à partir du code `index.js` à la racine du dépôt GitHub.
 3. Dans les paramètres du Worker, ajoute une liaison R2 appelée `FILES` et associe-la à ton bucket.
 4. Ajoute ces variables au Worker :
    - `SUPABASE_URL` : URL du projet Supabase.
@@ -49,7 +49,7 @@ La clé publishable ou anon peut apparaître dans le navigateur uniquement si le
 
 ## 4. Mettre à jour GitHub Pages
 
-Ajoute à la racine du dépôt `EspaceCloud` les fichiers `index.html`, `app.js`, `config.js`, `schema.sql`, `README.md` et le dossier `worker`. Dans **Settings → Pages**, conserve la publication depuis la branche `main` et le dossier `/ (root)`.
+Les fichiers nécessaires sont à la racine du dépôt `EspaceCloud` : `index.html`, `app.js`, `config.js`, `schema.sql`, `README.md`, `index.js` et `wrangler.toml.example`. Dans **Settings → Pages**, conserve la publication depuis la branche `main` et le dossier `/ (root)`.
 
 L’adresse actuelle du site est `https://paulcloud-ps.github.io/EspaceCloud/`. N’envoie pas de fichiers personnels au dépôt GitHub : seuls les fichiers choisis dans l’application doivent être envoyés au bucket privé.
 
